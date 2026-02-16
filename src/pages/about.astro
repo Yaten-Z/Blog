@@ -1,0 +1,54 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { ABOUT, SOCIALS, SITE } from "@consts";
+import Link from "@components/Link.astro";
+---
+
+<PageLayout title={ABOUT.TITLE} description={ABOUT.DESCRIPTION}>
+  <Container>
+    <div class="space-y-16">
+      
+      <!-- 个人介绍部分 -->
+      <section class="space-y-4">
+        <div class="animate text-3xl font-semibold text-black dark:text-white">
+          Yaten
+        </div>
+        <div class="animate space-y-4 text-base leading-relaxed">
+          <p>
+            I am a ninth-grade student from Guangdong, China. I enjoy learning new technologies, exploring through hands-on projects, and gradually turning ideas into reality. During my studies, I actively participate in open-source projects.
+          </p>
+          <p>
+            I have also joined the <Link href="https://taten.org" external>TATEN Studio</Link>, where I collaborate, learn, and develop projects alongside like-minded middle school students. Through this experience, I have gained valuable insights.
+          </p>
+          <p>
+            I continuously engage in various projects to enhance my development skills. Feel free to browse my repository to see what I'm currently building, refactoring, or experimenting with.
+          </p>
+        </div>
+      </section>
+      <section class="space-y-6 animate">
+        <h2 class="text-xl font-semibold text-black dark:text-white">
+          保持联系
+        </h2>
+        <p class="text-sm opacity-75">
+          无论是合作机会、技术讨论，还是简单的问候，我都欢迎与你交流。
+        </p>
+        <ul class="space-y-2">
+          {SOCIALS.map(social => (
+            <li>
+              <Link href={social.HREF} external>
+                {social.NAME}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link href={`mailto:${SITE.EMAIL}`}>
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </Container>
+</PageLayout>
