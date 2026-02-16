@@ -1,0 +1,50 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import FriendCard from "@components/FriendCard.astro";
+import { LINKS, FRIEND_LINKS_GROUPED } from "@friends";
+---
+
+<PageLayout title={LINKS.TITLE} description={LINKS.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <section class="space-y-4">
+        <div class="animate text-3xl font-semibold text-black dark:text-white">
+          {LINKS.TITLE}
+        </div>
+        <div class="animate text-base text-black/50 dark:text-white/75">
+          {LINKS.DESCRIPTION}
+        </div>
+      </section>
+
+      {FRIEND_LINKS_GROUPED.map((category) => (
+        <section class="animate space-y-6">
+          <div class="font-semibold text-lg text-black dark:text-white">
+            {category.CATEGORY}
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {category.LINKS.map((link) => (
+              <div class="animate">
+                <FriendCard 
+                  name={link.NAME}
+                  href={link.HREF}
+                  description={link.DESCRIPTION}
+                  avatar={link.AVATAR}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section class="animate space-y-4">
+        <h2 class="font-semibold text-black dark:text-white">
+          想要互换友链？
+        </h2>
+        <p class="text-sm text-black/50 dark:text-white/75">
+          如果你有一个有趣的博客或网站，我很乐意互换友链！请通过邮件或社交媒体与我联系。
+        </p>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
