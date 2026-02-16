@@ -2,6 +2,7 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import FriendCard from "@components/FriendCard.astro";
+import Giscus from "@components/Giscus.astro";
 import { LINKS, FRIEND_LINKS_GROUPED } from "@friends";
 ---
 
@@ -44,6 +45,11 @@ import { LINKS, FRIEND_LINKS_GROUPED } from "@friends";
         <p class="text-sm text-black/50 dark:text-white/75">
           如果你有一个有趣的博客或网站，我很乐意互换友链！请通过邮件或社交媒体与我联系。
         </p>
+      </section>
+
+      <!-- Giscus 评论区 -->
+      <section class="animate">
+        <Giscus />
       </section>
     </div>
   </Container>

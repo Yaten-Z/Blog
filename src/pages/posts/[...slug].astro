@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
+import Giscus from "@components/Giscus.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 
@@ -45,5 +46,10 @@ const { Content } = await post.render();
     <article class="animate">
       <Content />
     </article>
+    
+    <!-- Giscus 评论区 -->
+    <div class="animate">
+      <Giscus />
+    </div>
   </Container>
 </PageLayout>

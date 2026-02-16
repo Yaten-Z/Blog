@@ -142,7 +142,18 @@ const { title, description, image = "/nano.png" } = Astro.props;
     });
   }
 
-function toggleTheme(dark) {
+  function updateGiscusTheme(dark) {
+    const theme = dark ? "dark" : "light";
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+      );
+    }
+  }
+
+  function toggleTheme(dark) {
     const css = document.createElement("style");
 
     css.appendChild(
@@ -166,8 +177,11 @@ function toggleTheme(dark) {
       document.documentElement.classList.remove("dark");
     }
 
-  window.getComputedStyle(css).opacity;
+    window.getComputedStyle(css).opacity;
     document.head.removeChild(css);
+    
+    // 更新 Giscus 主题
+    updateGiscusTheme(dark);
   }
 
   function preloadTheme() {
